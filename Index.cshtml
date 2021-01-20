@@ -1,0 +1,85 @@
+﻿@model IEnumerable<OnlineShopping.Models.LaptopModel>
+
+@*@{
+    ViewData["Title"] = "Index";
+}*@
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+<style>
+    .image {
+        opacity: 1;
+        display: block;
+        width: 100px;
+        height: 100px;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+        .image:hover {
+            opacity: 0.3;
+        }
+
+    .name {
+        
+        text-decoration: none;
+    }
+
+    .name:hover {
+         text-decoration: underline;
+    }    
+        
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="visibility:hidden">
+                @Html.DisplayNameFor(model => model.Sno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specifications)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="visibility:hidden">
+                @Html.DisplayFor(modelItem => item.Sno)
+            </td>
+            <td>
+                <a class="image" href="@Url.Action("Details", "Dashboard", new { sno = item.Sno })"><img src="~/images/@Html.DisplayFor(modelItem => item.Image)" width="100px" height="100px" /></a>
+            </td>
+            <td>
+                <a class="name" href="@Url.Action("Details", "Dashboard", new { sno = item.Sno })" style="text-decoration:none">@Html.DisplayFor(modelItem => item.Name)</a>
+</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specifications)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                <i class="fa fa-rupee"></i>@Html.DisplayFor(modelItem => item.Price)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

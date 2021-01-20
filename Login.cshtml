@@ -1,0 +1,23 @@
+﻿@*@{
+    ViewData["Title"] = "Laptop";
+}*@
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="mailid">Enter your Registered Email ID</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" class="form-control" name="MailID" required />
+                <input type="hidden" class="form-control" name="ItemID" value="@ViewBag.ItemID" />
+            </div>
+            <div>
+                <input type ="submit" name="save" @*asp-action="Index" asp-controller="Address"*@ class="btn btn-danger" value="Login"/>
+            </div>
+        </div>
+    </div>
+    
+}
+
